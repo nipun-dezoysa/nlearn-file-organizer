@@ -1,16 +1,18 @@
 document.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", (e) => {
+    var fileName = getFileName(link);
     if (
       link
         .getAttribute("href")
-        .startsWith("https://nlearn.nsbm.ac.lk/mod/resource")
+        .startsWith("https://nlearn.nsbm.ac.lk/mod/resource") &&
+      fileName != "unknown"
     ) {
       e.preventDefault();
       chrome.runtime.sendMessage({
         action: "download",
         url: link.getAttribute("href"),
         course: document.title.substring(8, document.title.length),
-        fileName: getFileName(link),
+        fileName,
       });
     } else {
       chrome.tabs.create({ url: link.getAttribute("href") });
@@ -29,6 +31,8 @@ function getFileName(element) {
     fileName += ".pdf";
   } else if (src.includes("document")) {
     fileName += ".docx";
+  } else {
+    fileName = "unknown";
   }
   return fileName;
 }
