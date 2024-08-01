@@ -7,8 +7,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       },
       (downloadId) => {
         if (downloadId) {
-          console.log(`Download initiated with ID: ${downloadId}`);
-        } else {
           console.error(`Download failed: ${chrome.runtime.lastError}`);
         }
       }

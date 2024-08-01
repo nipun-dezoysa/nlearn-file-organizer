@@ -14,8 +14,6 @@ document.querySelectorAll("a").forEach((link) => {
         course: document.title.substring(8, document.title.length),
         fileName,
       });
-    } else {
-      chrome.tabs.create({ url: link.getAttribute("href") });
     }
   });
 });
