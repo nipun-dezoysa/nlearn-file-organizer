@@ -3,7 +3,7 @@
   "name": "NLearn File Organizer",
   "version": "1.0",
   "description": "Chrome Extension to Organize Downloaded Resources from nLearn",
-  "permissions": ["downloads", "scripting"],
+  "permissions": ["downloads", "scripting", "storage","activeTab"],
   "background": {
     "service_worker": "background.js"
   },
@@ -14,6 +14,15 @@
       "js": ["content.js"]
     }
   ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "32": "icons/32.png",
+      "72": "icons/72.png",
+      "128": "icons/128.png",
+      "512": "icons/512.png"
+    }
+  },
   "icons": {
     "32": "icons/32.png",
     "72": "icons/72.png",

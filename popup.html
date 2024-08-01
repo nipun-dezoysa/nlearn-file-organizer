@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NLearn File Organizer</title>
+    <style>
+      body {
+        width: 200px;
+        font-family: Arial, sans-serif;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+      }
+      .header img {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+      }
+      .header h1 {
+        font-size: 12px;
+      }
+      .box {
+        border: 1px solid #bcb8b8;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+      .option {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px;
+      }
+      .op {
+        background-color: #f1f1f1;
+        padding: 5px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+      .option div {
+        font-size: 12px;
+      }
+      .option input {
+        width: 15px;
+        height: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <img src="./icons/512.png" alt="logo" />
+      <h1>NLearn File Organizer</h1>
+    </div>
+    <div class="box">
+      <div class="op">Optons</div>
+      <div class="option">
+        <div>Categorize by semester</div>
+        <input type="checkbox" name="sem" id="sem" />
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

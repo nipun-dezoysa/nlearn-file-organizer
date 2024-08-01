@@ -13,6 +13,8 @@ document.querySelectorAll("a").forEach((link) => {
         url: link.getAttribute("href"),
         course: document.title.substring(8, document.title.length),
         fileName,
+        year: document.getElementsByClassName("breadcrumb")[0].children[8]
+          .textContent,
       });
     }
   });
