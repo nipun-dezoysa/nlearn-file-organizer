@@ -13,5 +13,11 @@
       "matches": ["*://nlearn.nsbm.ac.lk/*"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "icons": {
+    "32": "icons/32.png",
+    "72": "icons/72.png",
+    "128": "icons/128.png",
+    "512": "icons/512.png"
+  }
 }
