@@ -3,7 +3,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     chrome.downloads.download(
       {
         url: request.url,
-        filename: `nlearn/${request.course}/${request.fileName}`,
+        filename: `NLearn/${request.course}/${request.fileName}`,
       },
       (downloadId) => {
         if (downloadId) {
