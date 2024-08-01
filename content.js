@@ -19,10 +19,9 @@ document.querySelectorAll("a").forEach((link) => {
 });
 
 function getFileName(element) {
-  var fileName = element.lastChild.textContent.substring(
-    0,
-    element.lastChild.textContent.length - 5
-  );
+  var fileName = element.lastChild.textContent
+    .substring(0, element.lastChild.textContent.length - 5)
+    .replace(/[\/:\\]/g, "_");
   var src = element.firstChild.getAttribute("src");
   if (src.includes("powerpoint")) {
     fileName += ".pptx";
