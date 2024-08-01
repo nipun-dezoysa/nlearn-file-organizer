@@ -1,3 +1,14 @@
+//set defualt categorize by semester 
+chrome.storage.local.get(["sem"], function (result) {
+  if(result.sem == undefined){
+    chrome.storage.local.set({ sem: true }, function () {
+      if (chrome.runtime.lastError) {
+        console.error(chrome.runtime.lastError);
+      }
+    });
+  }
+});
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "download") {
     chrome.storage.local.get(["sem"], function (result) {
