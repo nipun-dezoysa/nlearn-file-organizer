@@ -1,14 +1,45 @@
+var sem;
+var down;
+
 window.onload = function () {
   chrome.runtime.sendMessage({ action: "getState" }, function (response) {
-    document.getElementById("sem").checked = response.state;
-    document.querySelector("input[name=al]:checked").value = 1;
+    sem = response.sem;
+    down = response.down;
+    document.getElementById("sem").checked = response.sem;
+    document.getElementById("al" + response.down).checked = true;
   });
 };
 
 document.getElementById("sem").addEventListener("click", function () {
-  const isChecked = document.getElementById("sem").checked;
-  chrome.runtime.sendMessage({
-    action: "setState",
-    state: isChecked,
-  });
+  sem = document.getElementById("sem").checked;
+  sendMsg();
 });
+
+document.getElementById("al1").addEventListener("click", function () {
+  if (document.getElementById("al1").checked) {
+    down = 1;
+    sendMsg();
+  }
+});
+
+document.getElementById("al2").addEventListener("click", function () {
+  if (document.getElementById("al2").checked) {
+    down = 2;
+    sendMsg();
+  }
+});
+
+document.getElementById("al3").addEventListener("click", function () {
+  if (document.getElementById("al3").checked) {
+    down = 3;
+    sendMsg();
+  }
+});
+
+function sendMsg() {
+  chrome.runtime.sendMessage({
+    action:"setState",
+    sem,
+    down,
+  });
+}
