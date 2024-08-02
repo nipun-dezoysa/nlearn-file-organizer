@@ -1,6 +1,7 @@
 window.onload = function () {
   chrome.runtime.sendMessage({ action: "getState" }, function (response) {
     document.getElementById("sem").checked = response.state;
+    document.querySelector("input[name=al]:checked").value = 1;
   });
 };
 

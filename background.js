@@ -1,6 +1,6 @@
-//set defualt categorize by semester 
+//set defualt categorize by semester
 chrome.storage.local.get(["sem"], function (result) {
-  if(result.sem == undefined){
+  if (result.sem == undefined) {
     chrome.storage.local.set({ sem: true }, function () {
       if (chrome.runtime.lastError) {
         console.error(chrome.runtime.lastError);
