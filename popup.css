@@ -1,0 +1,53 @@
+body {
+  width: 200px;
+  font-family: Arial, sans-serif;
+}
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.header img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.header h1 {
+  font-size: 10px;
+}
+.box {
+  border: 1px solid #bcb8b8;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+.op {
+  background-color: #f1f1f1;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.option div {
+  font-size: 12px;
+}
+.option input {
+  width: 15px;
+  height: 15px;
+}
+.divide {
+  border-top: 1px solid #bcb8b8;
+  margin: 5px;
+}
+.sub-head {
+  color: #bcb8b8;
+  font-size: 10px;
+  font-weight: bold;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+}
