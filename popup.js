@@ -22,6 +22,11 @@ window.onload = function () {
       }
     });
   });
+
+  document.getElementById("link").addEventListener("click",function(e){
+e.preventDefault;
+
+  });
 };
 
 function sendMsg() {
