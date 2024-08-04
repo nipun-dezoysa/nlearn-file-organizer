@@ -8,33 +8,21 @@ window.onload = function () {
     document.getElementById("sem").checked = response.sem;
     document.getElementById("al" + response.down).checked = true;
   });
+
+  document.getElementById("sem").addEventListener("click", function () {
+    sem = document.getElementById("sem").checked;
+    sendMsg();
+  });
+
+  document.getElementsByName("al").forEach((radio) => {
+    radio.addEventListener("change", function () {
+      if (radio.checked) {
+        down = radio.value;
+        sendMsg();
+      }
+    });
+  });
 };
-
-document.getElementById("sem").addEventListener("click", function () {
-  sem = document.getElementById("sem").checked;
-  sendMsg();
-});
-
-document.getElementById("al1").addEventListener("click", function () {
-  if (document.getElementById("al1").checked) {
-    down = 1;
-    sendMsg();
-  }
-});
-
-document.getElementById("al2").addEventListener("click", function () {
-  if (document.getElementById("al2").checked) {
-    down = 2;
-    sendMsg();
-  }
-});
-
-document.getElementById("al3").addEventListener("click", function () {
-  if (document.getElementById("al3").checked) {
-    down = 3;
-    sendMsg();
-  }
-});
 
 function sendMsg() {
   chrome.runtime.sendMessage({
