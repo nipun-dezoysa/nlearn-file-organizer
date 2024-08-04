@@ -1,29 +1,22 @@
 document.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", (e) => {
-    var fileName = getFileName(link);
     if (
       link
         .getAttribute("href")
-        .startsWith("https://nlearn.nsbm.ac.lk/mod/resource") &&
-      fileName != "unknown"
+        .startsWith("https://nlearn.nsbm.ac.lk/mod/resource")
     ) {
+      var fileName = getFileName(link);
+      if (fileName != "unknown") {
+        e.preventDefault();
+        download(link.getAttribute("href"), fileName);
+      }
+    } else if (link.getAttribute("href").includes("forcedownload=1")) {
       e.preventDefault();
-      chrome.runtime.sendMessage({
-        action: "download",
-        url: link.getAttribute("href"),
-        path:
-          replaceChar(
-            document
-              .getElementsByClassName("breadcrumb")[0]
-              .children[10].firstChild.firstChild.getAttribute("title")
-          ) +
-          "/" +
-          fileName,
-        year: replaceChar(
-          document.getElementsByClassName("breadcrumb")[0].children[8]
-            .textContent
-        ),
-      });
+      fileName = replaceChar(link.textContent);
+      var titleList = document.getElementsByClassName("breadcrumb")[0].children;
+      if (titleList.length > 12)
+        fileName = replaceChar(titleList[12].textContent) + "/" + fileName;
+      download(link.getAttribute("href"), fileName);
     }
   });
 });
@@ -50,4 +43,23 @@ function getFileName(element) {
     fileName = "unknown";
   }
   return fileName;
+}
+
+function download(url, path) {
+  path =
+    replaceChar(
+      document
+        .getElementsByClassName("breadcrumb")[0]
+        .children[10].firstChild.firstChild.getAttribute("title")
+    ) +
+    "/" +
+    path;
+  chrome.runtime.sendMessage({
+    action: "download",
+    url,
+    path,
+    year: replaceChar(
+      document.getElementsByClassName("breadcrumb")[0].children[8].textContent
+    ),
+  });
 }
