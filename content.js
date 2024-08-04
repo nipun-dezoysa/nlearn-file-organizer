@@ -11,19 +11,32 @@ document.querySelectorAll("a").forEach((link) => {
       chrome.runtime.sendMessage({
         action: "download",
         url: link.getAttribute("href"),
-        course: document.title.substring(8, document.title.length),
+        course: replaceChar(
+          document
+            .getElementsByClassName("breadcrumb")[0]
+            .children[10].firstChild.firstChild.getAttribute("title")
+        ),
         fileName,
-        year: document.getElementsByClassName("breadcrumb")[0].children[8]
-          .textContent,
+        year: replaceChar(
+          document.getElementsByClassName("breadcrumb")[0].children[8]
+            .textContent
+        ),
       });
     }
   });
 });
 
+function replaceChar(sentence) {
+  return sentence.trim().replace(/[\/:\\]/g, "_");
+}
+
 function getFileName(element) {
-  var fileName = element.lastChild.textContent
-    .substring(0, element.lastChild.textContent.length - 5)
-    .replace(/[\/:\\]/g, "_");
+  var fileName = replaceChar(
+    element.lastChild.textContent.substring(
+      0,
+      element.lastChild.textContent.length - 5
+    )
+  );
   var src = element.firstChild.getAttribute("src");
   if (src.includes("powerpoint")) {
     fileName += ".pptx";
