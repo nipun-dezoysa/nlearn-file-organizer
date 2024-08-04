@@ -15,7 +15,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       if (result.sem) {
         path += request.year + "/";
       }
-      path += request.course + "/" + request.fileName;
+      path += request.path;
 
       var conflict = "uniquify";
       if (result.down == 2) conflict = "overwrite";

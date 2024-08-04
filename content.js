@@ -11,12 +11,14 @@ document.querySelectorAll("a").forEach((link) => {
       chrome.runtime.sendMessage({
         action: "download",
         url: link.getAttribute("href"),
-        course: replaceChar(
-          document
-            .getElementsByClassName("breadcrumb")[0]
-            .children[10].firstChild.firstChild.getAttribute("title")
-        ),
-        fileName,
+        path:
+          replaceChar(
+            document
+              .getElementsByClassName("breadcrumb")[0]
+              .children[10].firstChild.firstChild.getAttribute("title")
+          ) +
+          "/" +
+          fileName,
         year: replaceChar(
           document.getElementsByClassName("breadcrumb")[0].children[8]
             .textContent
