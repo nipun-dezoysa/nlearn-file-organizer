@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "NLearn File Organizer",
   "version": "1.0",
-  "description": "Chrome Extension to Organize Downloaded Resources from nLearn",
-  "permissions": ["downloads", "scripting", "storage","activeTab"],
+  "description": "Chrome Extension to Organize Downloads from N-Learn. Automatically categorize and save files into course-specific folders as they are downloaded for easy access and organization.",
+  "permissions": ["downloads", "scripting", "storage", "activeTab"],
   "background": {
     "service_worker": "background.js"
   },

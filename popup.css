@@ -1,5 +1,5 @@
 body {
-  width: 200px;
+  width: 220px;
   font-family: Arial, sans-serif;
 }
 .header {
@@ -44,7 +44,7 @@ body {
   margin: 5px;
 }
 .sub-head {
-  color: #bcb8b8;
+  color: #908f8f;
   font-size: 10px;
   font-weight: bold;
   padding-left: 5px;
