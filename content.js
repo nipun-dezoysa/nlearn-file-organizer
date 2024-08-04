@@ -8,22 +8,7 @@ document.querySelectorAll("a").forEach((link) => {
       fileName != "unknown"
     ) {
       e.preventDefault();
-      chrome.runtime.sendMessage({
-        action: "download",
-        url: link.getAttribute("href"),
-        path:
-          replaceChar(
-            document
-              .getElementsByClassName("breadcrumb")[0]
-              .children[10].firstChild.firstChild.getAttribute("title")
-          ) +
-          "/" +
-          fileName,
-        year: replaceChar(
-          document.getElementsByClassName("breadcrumb")[0].children[8]
-            .textContent
-        ),
-      });
+      download(link.getAttribute("href"), fileName);
     }
   });
 });
@@ -50,4 +35,23 @@ function getFileName(element) {
     fileName = "unknown";
   }
   return fileName;
+}
+
+function download(url, path) {
+  path =
+    replaceChar(
+      document
+        .getElementsByClassName("breadcrumb")[0]
+        .children[10].firstChild.firstChild.getAttribute("title")
+    ) +
+    "/" +
+    path;
+  chrome.runtime.sendMessage({
+    action: "download",
+    url,
+    path,
+    year: replaceChar(
+      document.getElementsByClassName("breadcrumb")[0].children[8].textContent
+    ),
+  });
 }
