@@ -1,13 +1,21 @@
 document.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", (e) => {
-    var fileName = getFileName(link);
     if (
       link
         .getAttribute("href")
-        .startsWith("https://nlearn.nsbm.ac.lk/mod/resource") &&
-      fileName != "unknown"
+        .startsWith("https://nlearn.nsbm.ac.lk/mod/resource")
     ) {
+      var fileName = getFileName(link);
+      if (fileName != "unknown") {
+        e.preventDefault();
+        download(link.getAttribute("href"), fileName);
+      }
+    } else if (link.getAttribute("href").includes("forcedownload=1")) {
       e.preventDefault();
+      fileName = replaceChar(link.textContent);
+      var titleList = document.getElementsByClassName("breadcrumb")[0].children;
+      if (titleList.length > 12)
+        fileName = replaceChar(titleList[12].textContent) + "/" + fileName;
       download(link.getAttribute("href"), fileName);
     }
   });

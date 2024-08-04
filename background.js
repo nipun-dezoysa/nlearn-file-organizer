@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       var conflict = "uniquify";
       if (result.down == 2) conflict = "overwrite";
       else if (result.down == 3) conflict = "prompt";
-      
+
       chrome.downloads.download(
         {
           url: request.url,
