@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NLearn File Organizer",
-  "version": "1.0",
+  "version": "1.1",
   "author": "nipunavishka123@gmail.com",
   "description": "Chrome Extension to Organize Downloads from N-Learn.",
   "permissions": ["downloads", "storage"],
